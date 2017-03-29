@@ -4,6 +4,7 @@
   "description": "no description",
   "main": "index.js",
   "dependencies": {
+    "countdown": "^2.6.0",
     "generator-learnfe": "^0.3.0",
     "normalize.css": "^6.0.0",
     "yo": "^1.8.5"
