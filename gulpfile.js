@@ -11,8 +11,9 @@ var autoprefixer = require('gulp-autoprefixer');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
-
 var jshint = require('gulp-jshint');
+var mocha = require('gulp-mocha');
+var a11y = require('gulp-a11y');
 
 var menu = require('./menu.json');
 
@@ -73,6 +74,17 @@ gulp.task('lint', function(){
   gulp.src('src/scripts/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
+});
+
+gulp.task('test', function(){
+  gulp.src('test/*.js')
+    .pipe(mocha());
+});
+
+gulp.task('access', function(){
+  gulp.src('index.html')
+  .pipe(a11y())
+  .pipe(a11y.reporter());
 });
 
 gulp.task('default',['styles', 'images', 'scripts', 'templates'] , function () {
